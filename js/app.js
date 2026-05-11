@@ -1,4 +1,4 @@
-import { verifyVoter, submitFaceVerification, fetchCandidates, submitVotes, fetchElectionResults, fetchAdminStats, fetchVoters, fetchCandidatesAdmin, loginAdmin } from './api.js';
+import { registerVoter, verifyVoter, submitFaceVerification, fetchCandidates, submitVotes, fetchElectionResults, fetchAdminStats, fetchVoters, fetchCandidatesAdmin, loginAdmin } from './api.js';
 import { showToast, openModal, closeModal, setLoading, setThemePreference, getThemePreference, setSession, getSession, clearSession, formatNumber } from './ui.js';
 import { createCandidateCard, createResultItem } from '../components/ui-templates.js';
 
@@ -53,7 +53,7 @@ function getCandidateGroups() {
   }, {});
 }
 
-async function initVoterVerification() {
+async function initVoterLogin() {
   const form = document.getElementById('verificationForm');
   if (!form) return;
   form.addEventListener('submit', async (event) => {
@@ -67,7 +67,7 @@ async function initVoterVerification() {
 
     try {
       setLoading(event.submitter, true, 'Verifying...');
-      const response = await verifyVoter(cardNumber).catch(() => ({ verified: true }));
+      const response = await verifyVoter(cardNumber);
       if (!response.verified) {
         throw new Error(response.message || 'Card verification failed');
       }
@@ -144,6 +144,40 @@ async function initFaceVerification() {
 
   openButton.addEventListener('click', openCamera);
   captureButton.addEventListener('click', captureFace);
+}
+
+async function initVoterRegister() {
+  const form = document.getElementById('registrationForm');
+  if (!form) return;
+
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    const payload = {
+      firstName: document.getElementById('firstName').value.trim(),
+      lastName: document.getElementById('lastName').value.trim(),
+      cardNumber: document.getElementById('registerCardNumber').value.trim(),
+      email: document.getElementById('registerEmail').value.trim(),
+      phone: document.getElementById('registerPhone').value.trim(),
+      pollingUnitCode: document.getElementById('pollingUnitCode').value.trim(),
+    };
+
+    if (!payload.firstName || !payload.lastName || !payload.cardNumber || !payload.email || !payload.phone || !payload.pollingUnitCode) {
+      showToast('All fields are required to register.', 'error');
+      return;
+    }
+
+    try {
+      setLoading(event.submitter, true, 'Registering...');
+      const response = await registerVoter(payload);
+      setSession('voterSession', { cardNumber: response?.voter?.cardNumber || response?.cardNumber || payload.cardNumber, verified: true, timestamp: Date.now() });
+      showToast('Registration successful. Proceed to face verification.', 'success');
+      window.location.href = 'face-verification.html';
+    } catch (error) {
+      showToast(error.message || 'Registration failed.', 'error');
+    } finally {
+      setLoading(event.submitter, false);
+    }
+  });
 }
 
 async function initVotingDashboard() {
@@ -378,8 +412,11 @@ async function initElectionResults() {
 function initPage() {
   initTheme();
   switch (page) {
-    case 'voter-verification':
-      initVoterVerification();
+    case 'voter-login':
+      initVoterLogin();
+      break;
+    case 'voter-register':
+      initVoterRegister();
       break;
     case 'face-verification':
       initFaceVerification();

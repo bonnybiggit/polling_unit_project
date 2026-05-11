@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register to Vote | Polling Unit</title>
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body data-page="voter-register">
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-mark">PU</span>
+        <div>
+          <p class="eyebrow">Polling Unit</p>
+          <p class="brand-name">Voter Registration</p>
+        </div>
+      </div>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="../index.html">Home</a>
+        <a href="voter-verification.html">Login</a>
+        <a href="election-results.html">Results</a>
+      </nav>
+    </header>
+
+    <main class="page-content">
+      <section class="section">
+        <div class="section-heading">
+          <span class="eyebrow">Register to vote</span>
+          <h2>Create your voter profile and schedule face verification.</h2>
+        </div>
+        <p class="text-muted">Register with your voter card details so only verified individuals can cast a ballot.</p>
+        <form id="registrationForm" class="form-shell" novalidate>
+          <div class="grid-2">
+            <div class="form-field">
+              <label for="firstName">First name</label>
+              <input id="firstName" name="firstName" type="text" placeholder="Amina" required>
+            </div>
+            <div class="form-field">
+              <label for="lastName">Last name</label>
+              <input id="lastName" name="lastName" type="text" placeholder="Bello" required>
+            </div>
+          </div>
+          <div class="form-field">
+            <label for="registerCardNumber">Voter card number</label>
+            <input id="registerCardNumber" name="cardNumber" type="text" inputmode="numeric" placeholder="2211034501" required>
+          </div>
+          <div class="form-field">
+            <label for="registerEmail">Email address</label>
+            <input id="registerEmail" name="email" type="email" placeholder="amina.bello@example.com" required>
+          </div>
+          <div class="form-field">
+            <label for="registerPhone">Phone number</label>
+            <input id="registerPhone" name="phone" type="tel" placeholder="+234 800 000 0000" required>
+          </div>
+          <div class="form-field">
+            <label for="pollingUnitCode">Polling unit code</label>
+            <input id="pollingUnitCode" name="pollingUnitCode" type="text" placeholder="PU-001" required>
+          </div>
+          <button type="submit" class="button button-primary">Register</button>
+        </form>
+        <div class="section-light">
+          <h3>Next step</h3>
+          <p class="text-muted">After registration, you will proceed to biometric face verification to gain ballot access.</p>
+        </div>
+      </section>
+    </main>
+  </div>
+  <div id="toastContainer" aria-live="polite"></div>
+  <script type="module" src="../js/app.js"></script>
+</body>
+</html>

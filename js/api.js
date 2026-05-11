@@ -1,4 +1,4 @@
-const BASE_URL = 'https://api.pollingunit.gov';
+const BASE_URL = '/api';
 
 async function apiRequest(path, options = {}) {
   const url = `${BASE_URL}${path}`;
@@ -24,15 +24,22 @@ async function apiRequest(path, options = {}) {
   return response.json().catch(() => ({}));
 }
 
+export async function registerVoter(payload) {
+  return apiRequest('/voters/register', {
+    method: 'POST',
+    body: JSON.stringify(payload),
+  });
+}
+
 export async function verifyVoter(cardNumber) {
-  return apiRequest('/voter/verify', {
+  return apiRequest('/voters/verify', {
     method: 'POST',
     body: JSON.stringify({ cardNumber }),
   });
 }
 
 export async function submitFaceVerification(cardNumber, imageData) {
-  return apiRequest('/voter/face-verify', {
+  return apiRequest('/face/verify', {
     method: 'POST',
     body: JSON.stringify({ cardNumber, imageData }),
   });
