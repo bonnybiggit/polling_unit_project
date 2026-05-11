@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vote Submitted | Polling Unit</title>
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body data-page="vote-success">
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-mark">PU</span>
+        <div>
+          <p class="eyebrow">Vote success</p>
+          <p class="brand-name">Ballot completed</p>
+        </div>
+      </div>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="../index.html">Home</a>
+        <a href="election-results.html">Results</a>
+        <a href="voter-verification.html">New vote</a>
+      </nav>
+    </header>
+
+    <main class="page-content">
+      <section class="section">
+        <div class="section-heading">
+          <span class="eyebrow">Thank you</span>
+          <h2>Your ballot has been submitted successfully.</h2>
+        </div>
+        <p class="text-muted">Your vote is now recorded in the official election system. You may review election results or begin a new voting session.</p>
+        <div class="section-grid">
+          <div class="card">
+            <h3>Vote reference</h3>
+            <p class="text-muted">Reference ID: <strong id="voteReference">PU-2026-48F9</strong></p>
+          </div>
+          <div class="card">
+            <h3>What happens next</h3>
+            <p class="text-muted">The ballot is encrypted and routed to the central election service. Results are tallied and published in the administrative dashboard.</p>
+          </div>
+        </div>
+        <div class="button-row" style="margin-top: 20px; gap: 14px; flex-wrap: wrap; display: flex;">
+          <a class="button button-primary" href="election-results.html">View election results</a>
+          <a class="button button-secondary" href="voter-verification.html">Return to verification</a>
+        </div>
+      </section>
+    </main>
+  </div>
+  <div id="toastContainer" aria-live="polite"></div>
+  <script type="module" src="../js/app.js"></script>
+</body>
+</html>

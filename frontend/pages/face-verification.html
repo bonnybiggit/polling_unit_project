@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Face Verification | Polling Unit</title>
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body data-page="face-verification">
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-mark">PU</span>
+        <div>
+          <p class="eyebrow">Face verification</p>
+          <p class="brand-name">Biometric authentication</p>
+        </div>
+      </div>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="../index.html">Home</a>
+        <a href="voter-verification.html">Voter verify</a>
+        <a href="voting-dashboard.html">Voting dashboard</a>
+      </nav>
+    </header>
+
+    <main class="page-content">
+      <section class="section">
+        <div class="section-heading">
+          <span class="eyebrow">Step 2</span>
+          <h2>Open the webcam and capture a live face image.</h2>
+        </div>
+        <div class="grid-2">
+          <div class="section-light">
+            <h3>How it works</h3>
+            <p class="text-muted">The voting system uses live face capture to confirm the registered voter. Ensure your face is centered and evenly lit.</p>
+            <ol>
+              <li>Allow access to your camera.</li>
+              <li>Position your face within the video frame.</li>
+              <li>Capture the image and submit for verification.</li>
+            </ol>
+          </div>
+          <div class="card">
+            <div class="form-field">
+              <label for="cameraStream">Live camera</label>
+              <video id="cameraStream" autoplay muted playsinline class="media-frame"></video>
+              <canvas id="captureCanvas" class="media-frame hidden"></canvas>
+            </div>
+            <div class="button-row">
+              <button id="openCameraButton" type="button" class="button button-secondary">Open camera</button>
+              <button id="captureButton" type="button" class="button button-primary">Capture face</button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+  <div id="toastContainer" aria-live="polite"></div>
+  <script type="module" src="../js/app.js"></script>
+</body>
+</html>

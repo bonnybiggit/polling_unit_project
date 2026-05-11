@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard | Polling Unit</title>
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body data-page="admin-dashboard">
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-mark">PU</span>
+        <div>
+          <p class="eyebrow">Admin dashboard</p>
+          <p class="brand-name">Election control center</p>
+        </div>
+      </div>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="candidate-management.html">Candidates</a>
+        <a href="voter-management.html">Voters</a>
+        <a href="election-results.html">Results</a>
+      </nav>
+    </header>
+
+    <main class="page-content">
+      <section class="section section-grid">
+        <article class="card">
+          <p class="eyebrow">Voters verified</p>
+          <h2>89,512</h2>
+          <p class="text-muted">Verified voters with active ballot access in this election cycle.</p>
+        </article>
+        <article class="card">
+          <p class="eyebrow">Ballots cast</p>
+          <h2>47,891</h2>
+          <p class="text-muted">Live registered ballot submissions from polling stations.</p>
+        </article>
+        <article class="card">
+          <p class="eyebrow">Pending reviews</p>
+          <h2>12</h2>
+          <p class="text-muted">Biometric submissions awaiting administrative confirmation.</p>
+        </article>
+      </section>
+
+      <section class="section">
+        <div class="section-heading">
+          <span class="eyebrow">Operational overview</span>
+          <h2>Monitoring voter activity and election status in real time.</h2>
+        </div>
+        <div class="grid-2">
+          <article class="card">
+            <h3>Recent activity</h3>
+            <ul>
+              <li>12 new voter registrations approved in the last hour.</li>
+              <li>3 candidate updates applied for local offices.</li>
+              <li>2 unresolved verification alerts.</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Quick actions</h3>
+            <div class="button-row" style="display:flex; gap: 12px; flex-wrap: wrap;">
+              <a class="button button-primary" href="candidate-management.html">Manage candidates</a>
+              <a class="button button-secondary" href="voter-management.html">Review voters</a>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+  </div>
+  <div id="toastContainer" aria-live="polite"></div>
+  <script type="module" src="../js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Polling Unit | Smart Electronic Voting System</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body data-page="landing">
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-mark">PU</span>
+        <div>
+          <p class="eyebrow">Polling Unit</p>
+          <p class="brand-name">Smart Electronic Voting</p>
+        </div>
+      </div>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="pages/voter-verification.html">Vote</a>
+        <a href="pages/election-results.html">Results</a>
+        <a href="pages/admin-login.html">Admin</a>
+      </nav>
+      <div class="toolbar">
+        <button type="button" class="button button-secondary" id="themeToggle">Dark mode</button>
+      </div>
+    </header>
+
+    <main class="page-content">
+      <section class="hero section-primary">
+        <div class="hero-copy">
+          <span class="eyebrow">Secure. Transparent. Trusted.</span>
+          <h1>Government-grade electronic voting for trusted national elections.</h1>
+          <p>Designed for modern polling workflows with secure voter verification, biometric authentication, and real-time election insights.</p>
+          <div class="hero-actions">
+            <a href="pages/voter-verification.html" class="button button-primary">Start voting</a>
+            <a href="pages/admin-login.html" class="button button-secondary">Enterprise admin</a>
+          </div>
+        </div>
+        <div class="hero-panel">
+          <div class="stat-card">
+            <p class="stat-label">Live vote count</p>
+            <h2>1,824,610</h2>
+            <p class="stat-note">Secure update channel with protected transmission and audit logging.</p>
+          </div>
+          <div class="feature-list">
+            <article>
+              <h3>Biometric verification</h3>
+              <p>Face capture flow validates voter identity before ballot access.</p>
+            </article>
+            <article>
+              <h3>Single vote integrity</h3>
+              <p>One vote per office, one vote per verified voter. No duplicate submissions.</p>
+            </article>
+            <article>
+              <h3>Election management</h3>
+              <p>Admin tools for candidate and voter data with result dashboards.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-grid">
+        <article class="card">
+          <h2>Official voting workflow</h2>
+          <p>Voters verify with their polling card, authenticate with live face capture, then proceed to a secure ballot dashboard.</p>
+        </article>
+        <article class="card">
+          <h2>Trusted administration</h2>
+          <p>Admin login and oversight panels support candidate management, voter lists, and verified election results.</p>
+        </article>
+        <article class="card">
+          <h2>Accessible design</h2>
+          <p>Responsive and readable layouts ensure consistent access on desktop, tablet, and mobile devices.</p>
+        </article>
+      </section>
+
+      <section class="section section-light">
+        <div class="section-heading">
+          <span class="eyebrow">Why Polling Unit</span>
+          <h2>Built for secure national and local elections.</h2>
+        </div>
+        <div class="feature-grid">
+          <div class="feature-block">
+            <h3>Professional security</h3>
+            <p>Session handling, secure API architecture, and robust authentication flow.</p>
+          </div>
+          <div class="feature-block">
+            <h3>Clear election results</h3>
+            <p>Real-time graphs, vote tallies, and position-by-position result panels.</p>
+          </div>
+          <div class="feature-block">
+            <h3>Simple operations</h3>
+            <p>Search, filters, pagination, and modal workflows support election administrators.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>© 2026 Polling Unit. Designed for official voting and election management.</p>
+    </footer>
+  </div>
+
+  <template id="global-modal-template"></template>
+  <div id="toastContainer" aria-live="polite" aria-atomic="true"></div>
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

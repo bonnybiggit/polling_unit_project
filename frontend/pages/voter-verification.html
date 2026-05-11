@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Voter Verification | Polling Unit</title>
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body data-page="voter-verification">
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-mark">PU</span>
+        <div>
+          <p class="eyebrow">Polling Unit</p>
+          <p class="brand-name">Voter Verification</p>
+        </div>
+      </div>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="../index.html">Home</a>
+        <a href="face-verification.html">Face verify</a>
+        <a href="../pages/election-results.html">Results</a>
+      </nav>
+    </header>
+
+    <main class="page-content">
+      <section class="section">
+        <div class="section-heading">
+          <span class="eyebrow">Secure sign-in</span>
+          <h2>Verify your voter card before proceeding to biometric authentication.</h2>
+        </div>
+        <p class="text-muted">Enter your issued voter card number. Once verified, you will proceed to live face capture and ballot access.</p>
+        <form id="verificationForm" class="form-shell" novalidate>
+          <div class="form-field">
+            <label for="cardNumber">Voter Card Number</label>
+            <input id="cardNumber" name="cardNumber" type="text" inputmode="numeric" pattern="[0-9]{10,15}" placeholder="e.g. 1220098456" required>
+          </div>
+          <button type="submit" class="button button-primary">Verify card</button>
+        </form>
+        <div class="section-light">
+          <h3>Verification process</h3>
+          <ul>
+            <li>Authenticate your identity with an official voter card.</li>
+            <li>Proceed only if your card is validated by the election authority.</li>
+            <li>Face capture is required for ballot access.</li>
+          </ul>
+        </div>
+      </section>
+    </main>
+  </div>
+  <div id="toastContainer" aria-live="polite"></div>
+  <script type="module" src="../js/app.js"></script>
+</body>
+</html>
