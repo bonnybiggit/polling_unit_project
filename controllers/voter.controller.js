@@ -1,8 +1,50 @@
 const Voter = require('../models/voter.model');
+const PollingUnit = require('../models/pollingUnit.model');
 const { verifyVoterCard, loadVoterProfile, markVoterHasVoted } = require('../services/voter.service');
 const { logAction } = require('../services/audit.service');
 const catchAsync = require('../utils/catchAsync');
 const ApiError = require('../utils/apiError');
+
+exports.registerVoter = catchAsync(async (req, res) => {
+  const { firstName, lastName, cardNumber, email, phone, pollingUnitCode } = req.body;
+  if (!firstName || !lastName || !cardNumber || !pollingUnitCode) {
+    throw new ApiError(400, 'First name, last name, card number and polling unit code are required.');
+  }
+
+  const existing = await Voter.findOne({ cardNumber });
+  if (existing) {
+    throw new ApiError(409, 'This voter card is already registered.');
+  }
+
+  const pollingUnit = await PollingUnit.findOne({ code: pollingUnitCode });
+  if (!pollingUnit) {
+    throw new ApiError(404, 'Polling unit code not found.');
+  }
+
+  const voter = await Voter.create({
+    firstName,
+    lastName,
+    cardNumber,
+    email,
+    phone,
+    pollingUnit: pollingUnit._id,
+  });
+
+  await logAction({ actor: voter._id, actorType: 'Voter', action: 'register_voter', category: 'registration', req });
+
+  res.status(201).json({
+    status: 'success',
+    data: {
+      voter: {
+        id: voter._id,
+        cardNumber: voter.cardNumber,
+        firstName: voter.firstName,
+        lastName: voter.lastName,
+        pollingUnit: pollingUnit.code,
+      },
+    },
+  });
+});
 
 exports.verifyCard = catchAsync(async (req, res) => {
   const { cardNumber } = req.body;

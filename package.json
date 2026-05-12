@@ -12,10 +12,10 @@
     "seed": "node scripts/seed.js"
   },
   "dependencies": {
-    "@tensorflow/tfjs-node": "^5.5.0",
-    "@vladmandic/face-api": "^1.16.0",
+    "@tensorflow/tfjs-node": "^4.22.0",
+    "@vladmandic/face-api": "^1.7.15",
     "bcryptjs": "^2.4.3",
-    "canvas": "^2.16.0",
+    "canvas": "^2.11.2",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",

@@ -169,7 +169,8 @@ async function initVoterRegister() {
     try {
       setLoading(event.submitter, true, 'Registering...');
       const response = await registerVoter(payload);
-      setSession('voterSession', { cardNumber: response?.voter?.cardNumber || response?.cardNumber || payload.cardNumber, verified: true, timestamp: Date.now() });
+      const savedCardNumber = response?.data?.voter?.cardNumber || response?.voter?.cardNumber || response?.cardNumber || payload.cardNumber;
+      setSession('voterSession', { cardNumber: savedCardNumber, verified: true, timestamp: Date.now() });
       showToast('Registration successful. Proceed to face verification.', 'success');
       window.location.href = 'face-verification.html';
     } catch (error) {
